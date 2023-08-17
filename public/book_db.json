@@ -1,0 +1,302 @@
+[
+  {
+    "_id": 1,
+    "title": "Blood To Boss",
+    "author": "Jhankar Mahbub",
+    "price": 12.99,
+    "image": "/book_images/bolod-to-boss.jpg",
+    "genre": "Computer Programming",
+    "publication_date": "1951-07-16",
+    "rating": 4.2,
+    "reviews": [
+      {
+        "rating": 4.2,
+        "review_text": "A classic coming-of-age novel that still resonates today."
+      },
+      {
+        "rating": 3.8,
+        "review_text": "Holden Caulfield's character is unforgettable, but the story dragged at times."
+      }
+    ]
+  },
+  {
+    "_id": 2,
+    "title": "Habulder Jonno Programming",
+    "author": "Jhankar Mahbub",
+    "price": 10.99,
+    "image": "/book_images/habulder-jonno-programming.jpg",
+    "genre": "Computer Programming",
+    "publication_date": "1960-07-11",
+    "rating": 4.6,
+    "reviews": [
+      {
+        "rating": 4.6,
+        "review_text": "A powerful exploration of racial injustice and moral growth."
+      },
+      {
+        "rating": 4.0,
+        "review_text": "Atticus Finch is a hero, but the pacing could have been better."
+      }
+    ]
+  },
+  {
+    "_id": 3,
+    "title": "Pythone",
+    "author": "George Orwell",
+    "price": 9.99,
+    "image": "/book_images/Pythone_Data.jpg",
+    "genre": "Computer Programming",
+    "publication_date": "1949-06-08",
+    "rating": 4.5,
+    "reviews": [
+      {
+        "rating": 4.5,
+        "review_text": "A chilling dystopian vision that remains relevant today."
+      },
+      {
+        "rating": 4.8,
+        "review_text": "Big Brother is watching, and Orwell's writing is hauntingly prophetic."
+      }
+    ]
+  },
+  {
+    "_id": 4,
+    "title": "Office Management",
+    "author": "Jane Austen",
+    "price": 8.99,
+    "image": "/book_images/ms_office.jpeg",
+    "genre": "Computer Programming",
+    "publication_date": "1813-01-28",
+    "rating": 4.8,
+    "reviews": [
+      {
+        "rating": 4.8,
+        "review_text": "A timeless love story with memorable characters."
+      },
+      {
+        "rating": 4.2,
+        "review_text": "Elizabeth Bennet's wit shines, but some parts felt slow."
+      }
+    ]
+  },
+  {
+    "_id": 5,
+    "title": "Recharge your down battery",
+    "author": "Jhankar Mahbub",
+    "price": 11.99,
+    "image": "/book_images/recharge-your-down-battery.jpg",
+    "genre": "Computer Programming",
+    "publication_date": "1925-04-10",
+    "rating": 4.4,
+    "reviews": [
+      {
+        "rating": 4.4,
+        "review_text": "A portrait of the Jazz Age, but the characters lacked depth."
+      },
+      {
+        "rating": 3.9,
+        "review_text": "Beautiful prose, but the story left me wanting more."
+      }
+    ]
+  },
+  {
+    "_id": 6,
+    "title": "Harry Potter and the Sorcerer's Stone",
+    "author": "J.K. Rowling",
+    "price": 14.99,
+    "image": "/book_images/science_fiction.jpg",
+    "genre": "Fiction",
+    "publication_date": "1997-06-26",
+    "rating": 4.9,
+    "reviews": [
+      {
+        "rating": 4.9,
+        "review_text": "A magical start to an enchanting series."
+      },
+      {
+        "rating": 4.5,
+        "review_text": "An imaginative world, but pacing could be improved."
+      }
+    ]
+  },
+  {
+    "_id": 7,
+    "title": "The Hobbit",
+    "author": "J.R.R. Tolkien",
+    "price": 10.99,
+    "image": "/book_images/science_fiction3.jpg",
+    "genre": "Fiction",
+    "publication_date": "1937-09-21",
+    "rating": 4.7,
+    "reviews": [
+      {
+        "rating": 4.7,
+        "review_text": "An adventurous tale with charming characters."
+      },
+      {
+        "rating": 4.3,
+        "review_text": "Bilbo's journey is captivating, but the pacing was uneven."
+      }
+    ]
+  },
+  {
+    "_id": 8,
+    "title": "The Lord of the Rings",
+    "author": "J.R.R. Tolkien",
+    "price": 25.99,
+    "image": "/book_images/Liberation_War.jpg",
+    "genre": "The War",
+    "publication_date": "1954-07-29",
+    "rating": 4.6,
+    "reviews": [
+      {
+        "rating": 4.6,
+        "review_text": "An epic fantasy masterpiece with rich world-building."
+      },
+      {
+        "rating": 4.5,
+        "review_text": "Tolkien's imagination shines, though the pacing is slow at times."
+      }
+    ]
+  },
+  {
+    "_id": 9,
+    "title": "Moby-Dick",
+    "author": "Herman Melville",
+    "price": 13.99,
+    "image": "/book_images/Liberation_War2.jpg",
+    "genre": "The War",
+    "publication_date": "1851-10-18",
+    "rating": 4.1,
+    "reviews": [
+      {
+        "rating": 4.1,
+        "review_text": "A masterpiece of symbolism and adventure."
+      },
+      {
+        "rating": 3.7,
+        "review_text": "A classic, but the detailed descriptions can be overwhelming."
+      }
+    ]
+  },
+  {
+    "_id": 10,
+    "title": "Frankenstein",
+    "author": "Mary Shelley",
+    "price": 9.99,
+    "image": "/book_images/Liberation_War3.png",
+    "genre": "The War",
+    "publication_date": "1818-01-01",
+    "rating": 4.3,
+    "reviews": [
+      {
+        "rating": 4.3,
+        "review_text": "A thought-provoking exploration of science and humanity."
+      },
+      {
+        "rating": 3.9,
+        "review_text": "Frankenstein's creation is a compelling character, but pacing is uneven."
+      }
+    ]
+  },
+  {
+    "_id": 11,
+    "title": "The Adventures of Huckleberry Finn",
+    "author": "Mark Twain",
+    "price": 8.99,
+    "image": "/book_images/The_War.jpeg",
+    "genre": "The War",
+    "publication_date": "1884-12-10",
+    "rating": 4.0,
+    "reviews": [
+      {
+        "rating": 4.0,
+        "review_text": "A classic American novel with humorous and insightful moments."
+      },
+      {
+        "rating": 3.6,
+        "review_text": "Huck and Jim's journey is engaging, but some parts are slow."
+      }
+    ]
+  },
+  {
+    "_id": 12,
+    "title": "Alice's Adventures in Wonderland",
+    "author": "Lewis Carroll",
+    "price": 7.99,
+    "image": "/book_images/history.jpg",
+    "genre": "History",
+    "publication_date": "1865-11-26",
+    "rating": 4.5,
+    "reviews": [
+      {
+        "rating": 4.5,
+        "review_text": "A whimsical and imaginative journey through a surreal world."
+      },
+      {
+        "rating": 4.1,
+        "review_text": "Alice's adventures are charming, but the plot can be disjointed."
+      }
+    ]
+  },
+  {
+    "_id": 13,
+    "title": "Brave New World",
+    "author": "Aldous Huxley",
+    "price": 11.99,
+    "image": "/book_images/Parbotto_Chattogram_history.jpg",
+    "genre": "History",
+    "publication_date": "1932-04-20",
+    "rating": 4.2,
+    "reviews": [
+      {
+        "rating": 4.2,
+        "review_text": "A thought-provoking exploration of a dystopian future."
+      },
+      {
+        "rating": 3.9,
+        "review_text": "Huxley's vision is intriguing, though character development is lacking."
+      }
+    ]
+  },
+  {
+    "_id": 14,
+    "title": "The Picture of Dorian Gray",
+    "author": "Oscar Wilde",
+    "price": 10.99,
+    "image": "/book_images/The_History.jpeg",
+    "genre": "History",
+    "publication_date": "1890-07-01",
+    "rating": 4.4,
+    "reviews": [
+      {
+        "rating": 4.4,
+        "review_text": "A captivating exploration of vanity and morality."
+      },
+      {
+        "rating": 4.0,
+        "review_text": "Dorian Gray's transformation is fascinating, but pacing is uneven."
+      }
+    ]
+  },
+  {
+    "_id": 15,
+    "title": "War and Peace",
+    "author": "Leo Tolstoy",
+    "price": 18.99,
+    "image": "/book_images/Physics.jpg",
+    "genre": "Physics",
+    "publication_date": "1869-01-01",
+    "rating": 4.7,
+    "reviews": [
+      {
+        "rating": 4.7,
+        "review_text": "An epic tale of love and war in 19th-century Russia."
+      },
+      {
+        "rating": 4.5,
+        "review_text": "Tolstoy's characters are rich, but the length can be daunting."
+      }
+    ]
+  }
+]

@@ -6,7 +6,7 @@ const bookApi = api.injectEndpoints({
           query:()=> '/books',
         }),
     
-        singleBook: builder.query({
+        getSingleBook: builder.query({
           query:(id)=> `/book/${id}`,
         }),
     
@@ -27,4 +27,4 @@ const bookApi = api.injectEndpoints({
       })
 })
 
-export const {useGetBooksQuery, useSingleBookQuery, usePostCommentMutation, useGetCommentQuery} = bookApi;
+export const {useGetBooksQuery, useGetSingleBookQuery, usePostCommentMutation, useGetCommentQuery} = bookApi;

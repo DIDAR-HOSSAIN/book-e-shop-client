@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-floating-promises */
 import { Link, useNavigate } from 'react-router-dom';
 import { Avatar, AvatarFallback, AvatarImage } from '../components/ui/avatar';
 import { Button } from '../components/ui/button';
@@ -11,13 +12,13 @@ import {
 } from '../components/ui/dropdown-menu';
 import { HiOutlineSearch } from 'react-icons/hi';
 import Cart from '../components/Cart';
-import logo from '../assets/images/technet-logo.png';
 import { useAppDispatch, useAppSelector } from '../redux/hook/hook';
 import { signOut } from 'firebase/auth';
 import { auth } from '../lib/firebase.config';
 import { setUser } from '../redux/features/user/userSlice';
 
 export default function Navbar() {
+  
   const navigate = useNavigate();
   const {user} = useAppSelector((state)=> state.user);
   const dispatch = useAppDispatch();
@@ -34,7 +35,8 @@ export default function Navbar() {
       <div className="h-full w-full bg-white/60">
         <div className="flex items-center justify-between w-full md:max-w-7xl h-full mx-auto ">
           <div>
-            <img className="h-8" src={logo} alt="log" />
+            {/* <img className="h-8" src={logo} alt="log" /> */}
+            <h1 className='font-bold'>Book-E-Shop</h1>
           </div>
           <div>
             <ul className="flex items-center">
