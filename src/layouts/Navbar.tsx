@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 import { Link, useNavigate } from 'react-router-dom';
-import { Avatar, AvatarFallback, AvatarImage } from '../components/ui/avatar';
+import Avatar from './../assets/images/avatar.jpg';
+import logo from '../assets/images/book-e-shop-logo.png';
 import { Button } from '../components/ui/button';
 import { DropdownMenuSeparator } from '../components/ui/dropdown-menu';
 import { DropdownMenuLabel } from '../components/ui/dropdown-menu';
@@ -11,7 +12,6 @@ import {
   DropdownMenuContent,
 } from '../components/ui/dropdown-menu';
 import { HiOutlineSearch } from 'react-icons/hi';
-import Cart from '../components/Cart';
 import { useAppDispatch, useAppSelector } from '../redux/hook/hook';
 import { signOut } from 'firebase/auth';
 import { auth } from '../lib/firebase.config';
@@ -35,8 +35,7 @@ export default function Navbar() {
       <div className="h-full w-full bg-white/60">
         <div className="flex items-center justify-between w-full md:max-w-7xl h-full mx-auto ">
           <div>
-            {/* <img className="h-8" src={logo} alt="log" /> */}
-            <h1 className='font-bold'>Book-E-Shop</h1>
+            <img className="h-12" src={logo} alt="log" />
           </div>
           <div>
             <ul className="flex items-center">
@@ -51,25 +50,22 @@ export default function Navbar() {
                 </Button>
               </li>
               <li>
-                <Button variant="link" asChild>
-                  <Link to="/checkout">Checkout</Link>
-                </Button>
-              </li>
-              <li>
                 <Button variant="ghost">
                   <HiOutlineSearch size="25" />
                 </Button>
               </li>
-              <li>
-                <Cart />
-              </li>
               <li className="ml-5">
                 <DropdownMenu>
                   <DropdownMenuTrigger className="outline-none">
-                    <Avatar>
+                    {/* <Avatar>
                       <AvatarImage src="https://github.com/shadcn.png" />
                       <AvatarFallback>CN</AvatarFallback>
-                    </Avatar>
+                    </Avatar> */}
+                    <div className="avatar">
+                      <div className="w-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                        <img src={Avatar} />
+                      </div>
+                    </div>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent>
                     <DropdownMenuLabel>Account</DropdownMenuLabel>

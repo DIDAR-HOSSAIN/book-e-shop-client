@@ -1,44 +1,67 @@
-import { Button } from '../components/ui/button';
-import banner from '../assets/images/banner.png';
-import hero from '../assets/images/hero.png';
-import { Link } from 'react-router-dom';
+// import Footer from '../layouts/Footer';
+
+// export default function Home() {
+//   return (
+//     <>
+//       <div className="mx-auto ">
+//         <h1 className='text-center font-bold text-4xl'>Top 10 Recently Added Books</h1>
+
+//       </div>
+//       <Footer />
+//     </>
+//   );
+// }
+
+
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+import { useToast } from '../components/ui/use-toast';
+import { useAppDispatch, useAppSelector } from '../redux/hook/hook';
+import { IBook } from '../types/globalTypes';
+import {setPriceRange, toggleState} from '../redux/features/books/bookSlice'
+import BookCard from '../components/BookCard';
+import { useGetBooksQuery } from '../redux/features/books/bookApi';
 import Footer from '../layouts/Footer';
 
 export default function Home() {
+
+  const {data, isLoading, error} = useGetBooksQuery(undefined);
+  console.log(error);
+  console.log(data);
+
+  const { toast } = useToast();
+
+  const {priceRange, status} = useAppSelector((state)=>state.book);
+  const dispatch = useAppDispatch();
+
+  const handleSlider = (value: number[]) => {
+    dispatch(setPriceRange(value[0]));
+  };
+
+  let booksData;
+
+  if (status) {
+    booksData = data?.filter(
+      (item: { status: boolean; price: number; }) => item.status === true && item.price < priceRange
+    );
+  } else if (priceRange > 0) {
+    booksData = data?.filter((item: { price: number; }) => item.price < priceRange);
+  } else {
+    booksData = data;
+  }
+
   return (
     <>
-      <div className="flex justify-between items-center h-[calc(100vh-80px)] max-w-7xl mx-auto ">
-        <div>
-          <h1 className="text-6xl font-black text-primary mb-2">
-            HAYLOU <br /> SOLAR PLUSE
-          </h1>
-          <p className="text-secondary font-semibold text-xl">
-            Effortless communication at your fingertips
-          </p>
-          <div className="text-primary mt-20">
-            <p>Bluetooth 5.2 for easy, secure communication</p>
-            <p>Precise 143 Amoled display for clear visuals</p>
-          </div>
-          <Button className="mt-5">Learn more</Button>
-        </div>
-        <div className="relative -right-14">
-          <img src={banner} alt="" />
-        </div>
+    <h1 className='text-center font-bold text-4xl'>Top 10 Recently Added Books</h1>
+    <div className="grid grid-cols-12 max-w-7xl mx-auto relative ">
+      <div className="col-span-12 grid grid-cols-3 gap-10 pb-20">
+        {booksData?.map((book:IBook) => (
+          <BookCard book={book} />
+        ))}
       </div>
-      <div className="mb-96">
-        <div>
-          <img className="mx-auto" src={hero} alt="" />
-        </div>
-        <div className="flex flex-col items-center justify-center">
-          <h1 className="text-5xl font-black text-primary uppercase mt-10">
-            The future of tech is here
-          </h1>
-          <Button className="mt-10" asChild>
-            <Link to="/products">Brows all products</Link>
-          </Button>
-        </div>
-      </div>
-      <Footer />
+    </div>
+    <Footer />
     </>
   );
 }
