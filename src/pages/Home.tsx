@@ -1,18 +1,3 @@
-// import Footer from '../layouts/Footer';
-
-// export default function Home() {
-//   return (
-//     <>
-//       <div className="mx-auto ">
-//         <h1 className='text-center font-bold text-4xl'>Top 10 Recently Added Books</h1>
-
-//       </div>
-//       <Footer />
-//     </>
-//   );
-// }
-
-
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */

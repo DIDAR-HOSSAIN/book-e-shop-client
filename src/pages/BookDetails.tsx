@@ -2,12 +2,14 @@ import { Button } from '../components/ui/button';
 import { useParams } from 'react-router-dom';
 import BookReview from '../components/BookReview';
 import { useGetSingleBookQuery } from '../redux/features/books/bookApi';
+import { CloudCog } from 'lucide-react';
 
 
 export default function BookDetails() {
   const { id } = useParams();
 
   const {data:book, isLoading, error} = useGetSingleBookQuery(id)
+  console.log("from book details",book)
 
   return (
     <>
