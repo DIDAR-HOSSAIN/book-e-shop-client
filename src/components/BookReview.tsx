@@ -9,15 +9,16 @@ interface IProps {
   id: string | undefined;
 }
 
-const data = [
-  'Bhalo na',
-  'Ki shob ghori egula??',
-  'Eta kono product holo ??',
-  '200 taka dibo, hobe ??',
-];
+// const data = [
+//   'Bhalo na',
+//   'Ki shob ghori egula??',
+//   'Eta kono product holo ??',
+//   '200 taka dibo, hobe ??',
+// ];
 
 export default function BookReview({ id }: IProps) {
   const [inputValue, setInputValue] = useState<string>('');
+  const {data} = useGetCommentQuery(id);
   // const {data} = useGetCommentQuery(id, {refetchOnMountOrArgChange:true, pollingInterval:1000});
   //refetchOnMountOrArgChange:true, mana other component modda click kora back asla page refresh hoba.
   // polling interval 1000 mama 1 second por por page refresh hoba.
@@ -33,7 +34,7 @@ export default function BookReview({ id }: IProps) {
       id: id,
       data: {comment: inputValue},
     };
-    console.log('book rebiew page', options)
+    console.log('book rebiew page', data)
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
     postComment(options);
 
@@ -60,7 +61,7 @@ export default function BookReview({ id }: IProps) {
         </Button>
       </form>
       <div className="mt-10">
-        {data?.map((comment:string, index:number) => (
+        {data?.comments?.map((comment:string, index:number) => (
           <div key={index} className="flex gap-3 items-center mb-5">
             <Avatar>
               <AvatarImage src="https://github.com/shadcn.png" />
