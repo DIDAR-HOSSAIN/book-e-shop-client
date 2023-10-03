@@ -23,11 +23,11 @@ export default function BookDetails() {
           <h1 className="text-3xl font-semibold">Genre: {book?.genre}</h1>
           <h1 className="text-3xl font-semibold">Pubilication Date: {book?.publication_date}</h1>
           <p className="text-xl">Rating: {book?.rating}</p>
-          <ul className="space-y-1 text-lg">
-            {/* {book?.comments?.map((comment:string) => (
+          {/* <ul className="space-y-1 text-lg">
+            {book?.comments?.map((comment:string) => (
               <li key={comment}>{comment}</li>
-              ))} */}
-          </ul>
+              ))}
+          </ul> */}
           <Button>Add to cart</Button>
         </div>
       </div>

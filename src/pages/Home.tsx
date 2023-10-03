@@ -4,7 +4,7 @@
 import { useToast } from '../components/ui/use-toast';
 import { useAppDispatch, useAppSelector } from '../redux/hook/hook';
 import { IBook } from '../types/globalTypes';
-import {setPriceRange, toggleState} from '../redux/features/books/bookSlice'
+import {setPriceRange} from '../redux/features/books/bookSlice'
 import BookCard from '../components/BookCard';
 import { useGetBooksQuery } from '../redux/features/books/bookApi';
 import Footer from '../layouts/Footer';
@@ -12,6 +12,7 @@ import Footer from '../layouts/Footer';
 export default function Home() {
 
   const {data, isLoading, error} = useGetBooksQuery(undefined);
+  console.log(isLoading);-
   console.log(error);
   console.log(data);
 

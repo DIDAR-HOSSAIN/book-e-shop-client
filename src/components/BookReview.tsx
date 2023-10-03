@@ -4,6 +4,7 @@ import { Button } from './ui/button';
 import { Textarea } from './ui/textarea';
 import { FiSend } from 'react-icons/fi';
 import { useGetCommentQuery, usePostCommentMutation } from '../redux/features/books/bookApi';
+import commentsIcon  from '../assets/images/commentsIcon.png';
 
 interface IProps {
   id: string | undefined;
@@ -18,8 +19,7 @@ interface IProps {
 
 export default function BookReview({ id }: IProps) {
   const [inputValue, setInputValue] = useState<string>('');
-  const {data} = useGetCommentQuery(id);
-  // const {data} = useGetCommentQuery(id, {refetchOnMountOrArgChange:true, pollingInterval:1000});
+  const {data} = useGetCommentQuery(id, {refetchOnMountOrArgChange:true, pollingInterval:1000});
   //refetchOnMountOrArgChange:true, mana other component modda click kora back asla page refresh hoba.
   // polling interval 1000 mama 1 second por por page refresh hoba.
     console.log("fbd",data)
@@ -64,7 +64,7 @@ export default function BookReview({ id }: IProps) {
         {data?.comments?.map((comment:string, index:number) => (
           <div key={index} className="flex gap-3 items-center mb-5">
             <Avatar>
-              <AvatarImage src="https://github.com/shadcn.png" />
+              <AvatarImage src={commentsIcon} />
               <AvatarFallback>CN</AvatarFallback>
             </Avatar>
             <p>{comment}</p>
