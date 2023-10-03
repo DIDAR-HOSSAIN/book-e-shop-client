@@ -25,11 +25,14 @@ export default function BookCard({ book }: IProps) {
         <Link to={`/book-details/${book._id}`} className="items-center justify-center">
           <img className='w-[250px] h-[300px]' src={book?.image} alt="book" />
         <h1 className="text-xl font-semibold">{book?.title}</h1>
-        <p>Rating: {book?.rating}</p>
-        <p className="text-sm">
+        <p>Author: {book?.author}</p>
+        <p className="text-sm">Genre: {book?.genre}</p>
+        <p className="text-sm">Publication Date: {book?.publication_date}</p>
+
+        {/* <p className="text-sm">
           Availability: {book?.status ? 'In stock' : 'Out of stock'}
-        </p>
-        <p className="text-sm">Price: {book?.price}</p>
+        </p> */}
+
         </Link>
         <Button variant="default" onClick={() => handleAddProduct(book)}>
           Add to cart

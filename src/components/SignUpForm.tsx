@@ -24,6 +24,7 @@ export function SignUpForm({ className, ...props }: UserAuthFormProps) {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<SignUpFormInputs>();
 
@@ -32,7 +33,7 @@ export function SignUpForm({ className, ...props }: UserAuthFormProps) {
   const onSubmit = (data: SignUpFormInputs) => {
     console.log(data);
     dispatch(createUser({email:data.email, password:data.password}));
-
+    reset();
   };
 
   return (
