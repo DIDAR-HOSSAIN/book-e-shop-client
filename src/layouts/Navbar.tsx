@@ -50,6 +50,11 @@ export default function Navbar() {
                 </Button>
               </li>
               <li>
+                <Button variant="link" asChild>
+                  <Link to="/book">Add New Book</Link>
+                </Button>
+              </li>
+              <li>
                 <Button variant="ghost">
                   <HiOutlineSearch size="25" />
                 </Button>
