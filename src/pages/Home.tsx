@@ -12,7 +12,7 @@ import Footer from '../layouts/Footer';
 export default function Home() {
 
   const {data, isLoading, error} = useGetBooksQuery(undefined);
-  console.log(isLoading);-
+  console.log(isLoading);
   console.log(error);
   console.log(data);
 

@@ -1,54 +1,131 @@
-// "use client";
-import { ChangeEvent, FormEvent, useState } from 'react';
-import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
-import { Button } from './ui/button';
-import { Textarea } from './ui/textarea';
-import { FiSend } from 'react-icons/fi';
-import { useGetCommentQuery, usePostCommentMutation } from '../redux/features/books/bookApi';
-import commentsIcon  from '../assets/images/commentsIcon.png';
-
-// const data = [
-//   'Bhalo na',
-//   'Ki shob ghori egula??',
-//   'Eta kono product holo ??',
-//   '200 taka dibo, hobe ??',
-// ];
+import { useState } from 'react';
 
 export default function BookEntry() {
-  const [inputValue, setInputValue] = useState<string>('');
-  // const {data} = useGetCommentQuery(id, {refetchOnMountOrArgChange:true, pollingInterval:1000});
-  //refetchOnMountOrArgChange:true, mana other component modda click kora back asla page refresh hoba.
-  // polling interval 1000 mama 1 second por por page refresh hoba.
-    // console.log("fbd",data)
-  const [postBook, {isLoading, isError, isSuccess}] = usePostCommentMutation();
-  console.log(isLoading);
-  console.log(isError);
-  console.log(isSuccess);
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    console.log(inputValue);
-    const options = {
-      data: {inputValue},
-    };
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    postBook(options);
+  const [inputValues, setInputValues] = useState({
+    title: '',
+    author: '',
+    price: '',
+    image: '',
+    genre: '',
+    publication_date: '',
+    rating: '',
+    comments: '',
+  });
 
-    setInputValue('');
+  const handleSubmit = async (event: { preventDefault: () => void; }) => {
+    event.preventDefault();
+
+    try {
+      const response = await fetch('http://localhost:5000/book', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(inputValues),
+      });
+
+      if (response.ok) {
+        console.log('Book successfully added');
+        // Reset form values after successful submission
+        setInputValues({
+          title: '',
+          author: '',
+          price: '',
+          image: '',
+          genre: '',
+          publication_date: '',
+          rating: '',
+          comments: '',
+        });
+      } else {
+        console.error('Failed to add book');
+      }
+    } catch (error) {
+      console.error('Error adding book:', error);
+    }
   };
 
-  const handleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
-    setInputValue(event.target.value);
+  const handleChange = (event: { target: { name: any; value: any; }; }) => {
+    setInputValues((prevInputValues) => ({
+      ...prevInputValues,
+      [event.target.name]: event.target.value,
+    }));
   };
 
   return (
-    <div className="max-w-7xl mx-auto mt-5">
-      <form className="flex gap-5 items-center" onSubmit={handleSubmit}>
+    <div className="">
+      <h1 className='font-bold text-4xl text-center'>Book Entry</h1>
+      <form className="flex flex-col items-center gap-5" onSubmit={handleSubmit}>
+        {/* Add your input fields here with name attributes corresponding to your MongoDB fields */}
+        {/* Example: */}
         <input
-          className="min-h-[30px]"
+          placeholder="Title"
+          value={inputValues.title}
           onChange={handleChange}
-          value={inputValue}
+          name="title"
+          className="min-h-[40px] border border-solid border-black px-2 w-1/3 my-custom-class"
         />
-          <Button>Create Account</Button>
+
+        <input
+         placeholder="Author"
+         value={inputValues.author}
+         onChange={handleChange}
+         name="author"
+          className="min-h-[40px] border border-solid border-black px-2 w-1/3 my-custom-class"
+        />
+
+        <input
+         placeholder="Price"
+         value={inputValues.price}
+         onChange={handleChange}
+         name="price"
+          className="min-h-[40px] border border-solid border-black px-2 w-1/3 my-custom-class"
+        />
+
+        <input
+         placeholder="Image"
+         value={inputValues.image}
+         onChange={handleChange}
+         name="image"
+          className="min-h-[40px] border border-solid border-black px-2 w-1/3 my-custom-class"
+        />
+
+        <input
+         placeholder="Genre"
+         value={inputValues.genre}
+         onChange={handleChange}
+         name="genre"
+          className="min-h-[40px] border border-solid border-black px-2 w-1/3 my-custom-class"
+        />
+
+        <input
+         placeholder="Publication Date"
+         value={inputValues.publication_date}
+         onChange={handleChange}
+         name="publication_date"
+          className="min-h-[40px] border border-solid border-black px-2 w-1/3 my-custom-class"
+        />
+
+        <input
+         placeholder="Rating"
+         value={inputValues.rating}
+         onChange={handleChange}
+         name="rating"
+          className="min-h-[40px] border border-solid border-black px-2 w-1/3 my-custom-class"
+        />
+
+        <input
+         placeholder="Comments"
+         value={inputValues.comments}
+         onChange={handleChange}
+         name="comments"
+          className="min-h-[40px] border border-solid border-black px-2 w-1/3 my-custom-class"
+        />
+
+        <input
+          type="submit"
+          className="min-h-[40px] border border-solid border-black px-2 w-1/3 my-submit-button-class"
+        />
       </form>
     </div>
   );
