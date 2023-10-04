@@ -1,112 +1,140 @@
-// import { useForm } from "react-hook-form";
-// import { useAppDispatch } from "../redux/hook/hook";
-
-import { ChangeEvent, FormEvent, useState } from "react";
-import { usePostBookMutation } from "../redux/features/books/bookApi";
-
-type IBookData = {
-  title: string;
-  author: string;
-  price: number;
-  image: string;
-  genre: string;
-  publication_date: string;
-  rating: number;
-  comments: string;
-};
+import { useState } from 'react';
 
 export default function BookEntry() {
-  // const { register, handleSubmit, reset, formState: { errors } } = useForm<IBookData>();
-  // // const onSubmit: SubmitHandler<IBookData> = data => console.log(data);
-  // const dispatch = useAppDispatch();
+  const [inputValues, setInputValues] = useState({
+    title: '',
+    author: '',
+    price: '',
+    image: '',
+    genre: '',
+    publication_date: '',
+    rating: '',
+    comments: '',
+  });
 
-  // const onSubmit = (data: IBookData) => {
-  //   console.log(data);
-  //   dispatch(createUser({email:data.email, password:data.password}));
-  //   reset();
-  // };
-
-
-
-  const [inputValue, setInputValue] = useState<string>('');
-  const [postBook, {isLoading, isError, isSuccess}] = usePostBookMutation();
-  console.log(isLoading);
-  console.log(isError);
-  console.log(isSuccess);
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: { preventDefault: () => void; }) => {
     event.preventDefault();
-    console.log(inputValue);
-    const options = {
-      data: {book: inputValue},
-    };
-    postBook(options);
 
-    setInputValue('');
+    try {
+      const response = await fetch('http://localhost:5000/book', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(inputValues),
+      });
+
+      if (response.ok) {
+        console.log('Book successfully added');
+        // Reset form values after successful submission
+        setInputValues({
+          title: '',
+          author: '',
+          price: '',
+          image: '',
+          genre: '',
+          publication_date: '',
+          rating: '',
+          comments: '',
+        });
+      } else {
+        console.error('Failed to add book');
+      }
+    } catch (error) {
+      console.error('Error adding book:', error);
+    }
   };
 
-  const handleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
-    setInputValue(event.target.value);
+  const handleChange = (event: { target: { name: any; value: any; }; }) => {
+    setInputValues((prevInputValues) => ({
+      ...prevInputValues,
+      [event.target.name]: event.target.value,
+    }));
   };
-
 
   return (
     <div className="">
-      <h1 className='font-bold text-4xl text-center'>Book Entry</h1>
-      <form className="flex flex-col items-center gap-5" onSubmit={handleSubmit(onSubmit)}>
+      <h1 className='font-bold text-4xl text-center mb-6'>Book Entry</h1>
+      <form className="flex flex-col items-center gap-5" onSubmit={handleSubmit}>
+        {/* Add your input fields here with name attributes corresponding to your MongoDB fields */}
+        {/* Example: */}
         <input
           placeholder="Title"
-          {...register("title")}
+          value={inputValues.title}
+          onChange={handleChange}
+          name="title"
           className="min-h-[40px] border border-solid border-black px-2 w-1/3 my-custom-class"
+          required
         />
-              
+
         <input
          placeholder="Author"
-          {...register("author")}
+         value={inputValues.author}
+         onChange={handleChange}
+         name="author"
           className="min-h-[40px] border border-solid border-black px-2 w-1/3 my-custom-class"
+          required
         />
 
         <input
          placeholder="Price"
-          {...register("price")}
+         value={inputValues.price}
+         onChange={handleChange}
+         name="price"
           className="min-h-[40px] border border-solid border-black px-2 w-1/3 my-custom-class"
         />
 
         <input
          placeholder="Image"
-          {...register("image")}
+         value={inputValues.image}
+         onChange={handleChange}
+         name="image"
           className="min-h-[40px] border border-solid border-black px-2 w-1/3 my-custom-class"
+          required
         />
 
         <input
          placeholder="Genre"
-          {...register("genre")}
+         value={inputValues.genre}
+         onChange={handleChange}
+         name="genre"
           className="min-h-[40px] border border-solid border-black px-2 w-1/3 my-custom-class"
+          required
         />
 
         <input
          placeholder="Publication Date"
-          {...register("publication_date")}
+         value={inputValues.publication_date}
+         onChange={handleChange}
+         name="publication_date"
           className="min-h-[40px] border border-solid border-black px-2 w-1/3 my-custom-class"
+          required
         />
 
         <input
          placeholder="Rating"
-          {...register("rating")}
+         value={inputValues.rating}
+         onChange={handleChange}
+         name="rating"
           className="min-h-[40px] border border-solid border-black px-2 w-1/3 my-custom-class"
         />
 
         <input
          placeholder="Comments"
-          {...register("comments")}
+         value={inputValues.comments}
+         onChange={handleChange}
+         name="comments"
           className="min-h-[40px] border border-solid border-black px-2 w-1/3 my-custom-class"
         />
-       
-       <input
+
+        <input
           type="submit"
           className="min-h-[40px] border border-solid border-black px-2 w-1/3 my-submit-button-class"
         />
-
       </form>
     </div>
   );
 }
+
+
+

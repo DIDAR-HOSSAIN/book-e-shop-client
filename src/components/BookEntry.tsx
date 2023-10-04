@@ -54,7 +54,7 @@ export default function BookEntry() {
 
   return (
     <div className="">
-      <h1 className='font-bold text-4xl text-center'>Book Entry</h1>
+      <h1 className='font-bold text-4xl text-center mb-6'>Book Entry</h1>
       <form className="flex flex-col items-center gap-5" onSubmit={handleSubmit}>
         {/* Add your input fields here with name attributes corresponding to your MongoDB fields */}
         {/* Example: */}
@@ -64,6 +64,7 @@ export default function BookEntry() {
           onChange={handleChange}
           name="title"
           className="min-h-[40px] border border-solid border-black px-2 w-1/3 my-custom-class"
+          required
         />
 
         <input
@@ -72,6 +73,7 @@ export default function BookEntry() {
          onChange={handleChange}
          name="author"
           className="min-h-[40px] border border-solid border-black px-2 w-1/3 my-custom-class"
+          required
         />
 
         <input
@@ -88,6 +90,7 @@ export default function BookEntry() {
          onChange={handleChange}
          name="image"
           className="min-h-[40px] border border-solid border-black px-2 w-1/3 my-custom-class"
+          required
         />
 
         <input
@@ -96,6 +99,7 @@ export default function BookEntry() {
          onChange={handleChange}
          name="genre"
           className="min-h-[40px] border border-solid border-black px-2 w-1/3 my-custom-class"
+          required
         />
 
         <input
@@ -104,6 +108,7 @@ export default function BookEntry() {
          onChange={handleChange}
          name="publication_date"
           className="min-h-[40px] border border-solid border-black px-2 w-1/3 my-custom-class"
+          required
         />
 
         <input
@@ -130,3 +135,6 @@ export default function BookEntry() {
     </div>
   );
 }
+
+
+
