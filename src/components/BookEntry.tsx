@@ -12,7 +12,7 @@ export default function BookEntry() {
     comments: '',
   });
 
-  const handleSubmit = async (event: { preventDefault: () => void; }) => {
+  const handleSubmit = async (event: { preventDefault: () => void }) => {
     event.preventDefault();
 
     try {
@@ -26,7 +26,6 @@ export default function BookEntry() {
 
       if (response.ok) {
         console.log('Book successfully added');
-        // Reset form values after successful submission
         setInputValues({
           title: '',
           author: '',
@@ -45,16 +44,34 @@ export default function BookEntry() {
     }
   };
 
-  const handleChange = (event: { target: { name: any; value: any; }; }) => {
-    setInputValues((prevInputValues) => ({
-      ...prevInputValues,
-      [event.target.name]: event.target.value,
-    }));
+  const handleChange = (event: { target: { name: any; value: any } }) => {
+    const { name, value } = event.target;
+
+    setInputValues((prevInputValues) => {
+      if (name === 'price' || name === 'rating') {
+        // Convert price and rating to numbers
+        return {
+          ...prevInputValues,
+          [name]: value === '' ? '' : parseFloat(value),
+        };
+      } else if (name === 'comments') {
+        // Convert comments to an array
+        return {
+          ...prevInputValues,
+          [name]: value.split(',').map((comment: string) => comment.trim()),
+        };
+      } else {
+        return {
+          ...prevInputValues,
+          [name]: value,
+        };
+      }
+    });
   };
 
   return (
     <div className="">
-      <h1 className='font-bold text-4xl text-center mb-6'>Book Entry</h1>
+            <h1 className='font-bold text-4xl text-center mb-6'>Book Entry</h1>
       <form className="flex flex-col items-center gap-5" onSubmit={handleSubmit}>
         {/* Add your input fields here with name attributes corresponding to your MongoDB fields */}
         {/* Example: */}
@@ -135,6 +152,3 @@ export default function BookEntry() {
     </div>
   );
 }
-
-
-

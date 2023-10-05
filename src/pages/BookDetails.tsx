@@ -14,7 +14,7 @@ export default function BookDetails() {
     <>
       <div className="flex h-screen items-center justify-center mx-auto border-b border-gray-300">
         <div className="w-[50%] flex justify-center">
-          <img src={book?.image} alt="" />
+          <img className='w-[250px] h-[300px]' src={book?.image} alt="" />
         </div>
         <div className="w-[50%] space-y-3">
           <h1 className="text-3xl font-semibold">Book Title: {book?.title}</h1>

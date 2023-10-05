@@ -2,7 +2,6 @@ import { ChangeEvent, FormEvent, useState } from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 import { Button } from './ui/button';
 import { Textarea } from './ui/textarea';
-import { FiSend } from 'react-icons/fi';
 import { useGetCommentQuery, usePostCommentMutation } from '../redux/features/books/bookApi';
 import commentsIcon  from '../assets/images/commentsIcon.png';
 
@@ -49,17 +48,20 @@ export default function BookReview({ id }: IProps) {
     <div className="max-w-7xl mx-auto mt-5">
       <form className="flex gap-5 items-center" onSubmit={handleSubmit}>
         <Textarea
-          className="min-h-[30px]"
+          className="min-h-[30px] border border-solid border-black px-2 w-1/3 my-custom-class text-xl"
           onChange={handleChange}
           value={inputValue}
+          placeholder='Your Comments here'
+          required
         />
         <Button
+          className='h-14'
           type="submit"
-          className="rounded-full h-10 w-10 p-2 text-[25px]"
         >
-          <FiSend />
+          Send
         </Button>
       </form>
+
       <div className="mt-10">
         {data?.comments?.map((comment:string, index:number) => (
           <div key={index} className="flex gap-3 items-center mb-5">
