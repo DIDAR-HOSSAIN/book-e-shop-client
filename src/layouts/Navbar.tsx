@@ -49,11 +49,13 @@ export default function Navbar() {
                   <Link to="/books">Books</Link>
                 </Button>
               </li>
+              {user.email && (
               <li>
                 <Button variant="link" asChild>
                   <Link to="/book">Add New Book</Link>
                 </Button>
               </li>
+              )}
               <li>
                 <Button variant="ghost">
                   <HiOutlineSearch size="25" />
