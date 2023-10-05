@@ -37,13 +37,15 @@ export default function Home() {
     booksData = data;
   }
 
+  const displayedBooks = booksData?.slice(0, 10);
+
   return (
     <>
     <h1 className='text-center font-bold text-4xl'>Top 10 Recently Added Books</h1>
     <div className="grid grid-cols-12 max-w-7xl mx-auto relative ">
       <div className="col-span-12 grid grid-cols-3 gap-10 pb-20">
-        {booksData?.map((book:IBook) => (
-          <BookCard book={book} />
+        {displayedBooks?.map((book:IBook) => (
+          <BookCard key={book.id} book={book} />
         ))}
       </div>
     </div>
