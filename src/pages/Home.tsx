@@ -45,7 +45,7 @@ export default function Home() {
     <div className="grid grid-cols-12 max-w-7xl mx-auto relative ">
       <div className="col-span-12 grid grid-cols-3 gap-10 pb-20">
         {displayedBooks?.map((book:IBook) => (
-          <BookCard key={book.id} book={book} />
+          <BookCard key={book._id} book={book} />
         ))}
       </div>
     </div>

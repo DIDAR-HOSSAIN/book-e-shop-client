@@ -28,7 +28,8 @@ export default function BookDetails() {
               <li key={comment}>{comment}</li>
               ))}
           </ul> */}
-          <Button>Add to cart</Button>
+          <Button className='mr-4'>Edit</Button>
+          <Button>Button</Button>
         </div>
       </div>
       <BookReview id={id!} />
