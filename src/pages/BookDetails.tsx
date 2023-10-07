@@ -1,7 +1,8 @@
 import { Button } from '../components/ui/button';
 import { useParams } from 'react-router-dom';
-import { useGetSingleBookQuery } from '../redux/features/books/bookApi';
+import { useDeleteBookMutation, useGetSingleBookQuery } from '../redux/features/books/bookApi';
 import BookReview from '../components/BookReview';
+import { toast } from '../components/ui/use-toast';
 
 
 export default function BookDetails() {
@@ -9,6 +10,25 @@ export default function BookDetails() {
 
   const {data:book, isLoading, error} = useGetSingleBookQuery(id);
   console.log("from book details",book)
+
+    const [deleteBook] = useDeleteBookMutation();
+
+  const handleDelete = async () => {
+    try {
+      await deleteBook(id).unwrap();
+      // toast.success('Book deleted successfully !');
+    } catch (error) {
+      console.error('Error deleting book:', error);
+    }
+  };
+
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return <p>Error loading book details</p>;
+  }
 
   return (
     <>
@@ -29,7 +49,7 @@ export default function BookDetails() {
               ))}
           </ul> */}
           <Button className='mr-4'>Edit</Button>
-          <Button>Button</Button>
+          <Button  onClick={handleDelete}>Delete</Button>
         </div>
       </div>
       <BookReview id={id!} />

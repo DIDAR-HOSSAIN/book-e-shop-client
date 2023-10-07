@@ -32,8 +32,17 @@ const bookApi = api.injectEndpoints({
           query:(id)=> `/comment/${id}`,
           providesTags:['comments refetch'],
         }),
+
+           // New endpoint for deleting a product
+    deleteBook: builder.mutation({
+      query: (id) => ({
+        url: `/book/${id}`,
+        method: 'DELETE',
+      }),
+      // Optionally, you can add invalidation logic for any affected queries here
+    }),
     
       })
 })
 
-export const {useGetBooksQuery, usePostBookMutation, useGetSingleBookQuery, usePostCommentMutation, useGetCommentQuery} = bookApi;
+export const {useGetBooksQuery, usePostBookMutation, useGetSingleBookQuery, usePostCommentMutation, useGetCommentQuery, useDeleteBookMutation} = bookApi;
