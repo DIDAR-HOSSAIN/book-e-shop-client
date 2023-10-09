@@ -6,7 +6,6 @@ import { Calendar as CalendarIcon } from 'lucide-react';
 
 import { cn } from '../../lib/utils';
 import { Button } from '../../components/ui/button';
-import { Calendar } from '../../components/ui/calendar';
 import {
   Popover,
   PopoverContent,
@@ -59,7 +58,7 @@ export function DatePickerWithPresets({ disabled }: IProps) {
           </SelectContent>
         </Select>
         <div className="rounded-md border">
-          <Calendar mode="single" selected={date} onSelect={setDate} />
+          
         </div>
       </PopoverContent>
     </Popover>

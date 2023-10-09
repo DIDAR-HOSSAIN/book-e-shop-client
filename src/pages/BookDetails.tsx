@@ -1,14 +1,15 @@
 import { Button } from '../components/ui/button';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useDeleteBookMutation, useGetSingleBookQuery } from '../redux/features/books/bookApi';
 import BookReview from '../components/BookReview';
 import toast, { Toaster } from 'react-hot-toast';
 
 export default function BookDetails() {
   const { id } = useParams();
-  const navigate = useNavigate();
 
   const { data: book, isLoading, error } = useGetSingleBookQuery(id);
+  console.log(isLoading);
+  console.log(error);
 
   const [deleteBook] = useDeleteBookMutation();
 

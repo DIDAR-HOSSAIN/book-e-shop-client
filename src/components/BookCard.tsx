@@ -1,9 +1,6 @@
 import { IBook } from '../types/globalTypes';
-import { toast } from './ui/use-toast';
-import { Button } from './ui/button';
 import { Link } from 'react-router-dom';
-import { useAppDispatch } from '../redux/hook/hook';
-import { addToCart } from '../redux/features/cart/cartSlice';
+// import { addToCart } from '../redux/features/cart/cartSlice';
 
 interface IProps {
   book: IBook;
@@ -11,13 +8,13 @@ interface IProps {
 
 export default function BookCard({ book }: IProps) {
 
-  const dispatch = useAppDispatch();
-  const handleAddProduct = (book: IBook) => {
-    dispatch(addToCart(book));
-    toast({
-      description: 'Product Added',
-    });
-  };
+  // const dispatch = useAppDispatch();
+  // const handleAddProduct = (book: IBook) => {
+  //   dispatch(addToCart(book));
+  //   toast({
+  //     description: 'Product Added',
+  //   });
+  // };
 
   return (
     <div>
@@ -34,9 +31,6 @@ export default function BookCard({ book }: IProps) {
         </p> */}
 
         </Link>
-        <Button variant="default" onClick={() => handleAddProduct(book)}>
-          Add to cart
-        </Button>
       </div>
     </div>
   );
