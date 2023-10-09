@@ -1,4 +1,7 @@
 import { useState } from 'react';
+import toast, { Toaster } from "react-hot-toast";
+
+const sucessNotify = () => toast.success("Book added Sucessfully!");
 
 export default function BookEntry() {
   const [inputValues, setInputValues] = useState({
@@ -145,10 +148,12 @@ export default function BookEntry() {
         />
 
         <input
-          type="submit"
+          type="submit" onClick={sucessNotify}
           className="min-h-[40px] border border-solid border-black px-2 w-1/3 my-submit-button-class"
         />
+        <Toaster />
       </form>
+      
     </div>
   );
 }

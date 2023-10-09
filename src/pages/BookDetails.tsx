@@ -1,34 +1,28 @@
 import { Button } from '../components/ui/button';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useDeleteBookMutation, useGetSingleBookQuery } from '../redux/features/books/bookApi';
 import BookReview from '../components/BookReview';
-import { toast } from '../components/ui/use-toast';
-
+import toast, { Toaster } from 'react-hot-toast';
 
 export default function BookDetails() {
   const { id } = useParams();
+  const navigate = useNavigate();
 
-  const {data:book, isLoading, error} = useGetSingleBookQuery(id);
-  console.log("from book details",book)
+  const { data: book, isLoading, error } = useGetSingleBookQuery(id);
 
-    const [deleteBook] = useDeleteBookMutation();
+  const [deleteBook] = useDeleteBookMutation();
 
   const handleDelete = async () => {
     try {
       await deleteBook(id).unwrap();
-      // toast.success('Book deleted successfully !');
+      console.log(deleteBook)
+      toast.success('Book deleted successfully')
     } catch (error) {
       console.error('Error deleting book:', error);
+      // Show toast notification on error
+      toast.error('Error deleting book');
     }
   };
-
-  if (isLoading) {
-    return <p>Loading...</p>;
-  }
-
-  if (error) {
-    return <p>Error loading book details</p>;
-  }
 
   return (
     <>
@@ -41,15 +35,11 @@ export default function BookDetails() {
           <h1 className="text-3xl font-semibold">Author: {book?.author}</h1>
           <h1 className="text-3xl font-semibold">Price: {book?.price}</h1>
           <h1 className="text-3xl font-semibold">Genre: {book?.genre}</h1>
-          <h1 className="text-3xl font-semibold">Pubilication Date: {book?.publication_date}</h1>
+          <h1 className="text-3xl font-semibold">Publication Date: {book?.publication_date}</h1>
           <p className="text-xl">Rating: {book?.rating}</p>
-          {/* <ul className="space-y-1 text-lg">
-            {book?.comments?.map((comment:string) => (
-              <li key={comment}>{comment}</li>
-              ))}
-          </ul> */}
           <Button className='mr-4'>Edit</Button>
-          <Button  onClick={handleDelete}>Delete</Button>
+          <Button onClick={handleDelete}>Delete</Button>
+          <Toaster />
         </div>
       </div>
       <BookReview id={id!} />
