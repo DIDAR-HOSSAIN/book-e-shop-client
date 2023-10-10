@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 export const api = createApi({
   reducerPath: 'api',
-  baseQuery:fetchBaseQuery({baseUrl:'https://book-e-shop-server.vercel.app'}),
+  baseQuery:fetchBaseQuery({baseUrl:'http://localhost:5000'}),
   tagTypes: ['comments refetch'],
   endpoints: ()=>({}),
 
